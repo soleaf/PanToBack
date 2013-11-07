@@ -9,6 +9,8 @@ Panning To Back Naivigating in  iOS App
 Use
 ========
 
+0. Copy files in 'src' to your project. And import header.
+
 1. Initation
 
 ```objective-c
