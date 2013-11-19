@@ -21,6 +21,9 @@
 
 @implementation PanToBack
 
+
+#pragma mark - Init
+
 -(void)linkView:(UIView *)newTargetView;
 {
     targetView = newTargetView;;
@@ -39,6 +42,7 @@
 {
     if (self.ui_backIndicator) return;
     
+    // Indicator Make
     self.ui_backIndicator = [[UILabel alloc] initWithFrame:CGRectMake(-80, 0, 80, 80)];
     self.ui_backIndicator.font = [UIFont boldSystemFontOfSize:17];
     self.ui_backIndicator.textColor = [UIColor whiteColor];
@@ -46,12 +50,15 @@
     self.ui_backIndicator.text = self.backText;
     
     float statusbarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-    [self move:self.ui_backIndicator toY:((targetView.frame.size.height/2) - (self.ui_backIndicator.frame.size.height/2)-statusbarHeight)];
+    [self move:self.ui_backIndicator
+           toY:((targetView.frame.size.height/2) - (self.ui_backIndicator.frame.size.height/2)-statusbarHeight)];
+    
     self.ui_backIndicator.layer.cornerRadius = self.ui_backIndicator.frame.size.width/2;
     [targetView addSubview:self.ui_backIndicator];
 }
 
-#pragma mark - Guesture
+
+#pragma mark - Gesture
 - (void)handlePanGesture:(UIPanGestureRecognizer *)panGesture //Your action method
 {
     if (self.isDissabled) return;
@@ -63,18 +70,26 @@
         {
             if (self.ui_backIndicator.frame.origin.x == -80 && [panGesture velocityInView:targetView].x  <=0) return;
             
+            /*
+             Define Backer Location
+             */
+            
             float moveTo = 0;
-            // 방향 ->
+            // Direction ->
             if ([panGesture velocityInView:targetView].x >= 0 && !backSwipeReversed){
                 moveTo = [panGesture locationInView:targetView].x - backSwipeBegan - 80;
             }
-            // 방향 <-
+            // Direction <-
             else{
                 moveTo = [panGesture locationInView:targetView].x;
                 backSwipeReversed = YES;
             }
             
-            // 센터 도착
+            /*
+             Animation
+             */
+            
+            // Arrived to center
             if (moveTo > center){
 
                 [UIView animateWithDuration:0.3 animations:^{
@@ -83,7 +98,7 @@
                 
                 self.ui_backIndicator.backgroundColor = [UIColor colorWithRed:1.00 green:0.47 blue:0.00 alpha:0.8];
             }
-            // 이동중
+            // Moving...
             else{
                 
                 [UIView animateWithDuration:0.3 animations:^{
@@ -94,23 +109,22 @@
             }
         }
         case UIGestureRecognizerStateBegan:
-            // 제스처 시작좌표 저장
+            // Saving Begin position
             if (backSwipeBegan <= 0)
                 backSwipeBegan = [panGesture locationInView:targetView].x;
             break;
         case UIGestureRecognizerStateEnded:{
             
-            // 초기화
             backSwipeBegan = 0;
             backSwipeReversed = NO;
             
-            // 액션!
+            // Action!
             if (self.ui_backIndicator.frame.origin.x >= center){
                 
                 [self back];
                 
             }
-            // 캐슬
+            // Canceled
             else{
                 [UIView animateWithDuration:.3 animations:^{
                     [self move:self.ui_backIndicator toX:-80];
@@ -127,6 +141,8 @@
     }
 }
 
+
+#pragma mark - Assist for moving UIView
 - (void) move:(UIView*)view toX:(CGFloat)x
 {
     CGRect frame = view.frame;
@@ -143,6 +159,8 @@
     view.frame = frame;
 }
 
+
+#pragma mark - Action
 - (void) back
 {
     [self.delegate back];

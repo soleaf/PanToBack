@@ -10,8 +10,10 @@
 
 /*
  
- In UIViewcontrolle with UINavigationViewController,
+ In UIViewcontroller with UINavigationViewController,
+ Use gesture to pop viewcontroller.
  
+ https://github.com/soleaf/PanToBack
  */
 
 @protocol PanTobackDelegate <NSObject>

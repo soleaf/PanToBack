@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F72529C7182B83F6006195CA"
-               BuildableName = "PanToBck.app"
+               BuildableName = "PanToBack.app"
                BlueprintName = "PanToBack"
                ReferencedContainer = "container:PanToBack.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F72529EB182B83F6006195CA"
-               BuildableName = "PanToBckTests.xctest"
+               BuildableName = "PanToBackTests.xctest"
                BlueprintName = "PanToBackTests"
                ReferencedContainer = "container:PanToBack.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F72529C7182B83F6006195CA"
-            BuildableName = "PanToBck.app"
+            BuildableName = "PanToBack.app"
             BlueprintName = "PanToBack"
             ReferencedContainer = "container:PanToBack.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F72529C7182B83F6006195CA"
-            BuildableName = "PanToBck.app"
+            BuildableName = "PanToBack.app"
             BlueprintName = "PanToBack"
             ReferencedContainer = "container:PanToBack.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F72529C7182B83F6006195CA"
-            BuildableName = "PanToBck.app"
+            BuildableName = "PanToBack.app"
             BlueprintName = "PanToBack"
             ReferencedContainer = "container:PanToBack.xcodeproj">
          </BuildableReference>
