@@ -54,6 +54,7 @@
            toY:((targetView.frame.size.height/2) - (self.ui_backIndicator.frame.size.height/2)-statusbarHeight)];
     
     self.ui_backIndicator.layer.cornerRadius = self.ui_backIndicator.frame.size.width/2;
+    self.ui_backIndicator.alpha = 0;
     [targetView addSubview:self.ui_backIndicator];
 }
 
