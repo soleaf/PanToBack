@@ -55,6 +55,7 @@
     
     self.ui_backIndicator.layer.cornerRadius = self.ui_backIndicator.frame.size.width/2;
     self.ui_backIndicator.alpha = 0;
+    self.ui_backIndicator.clipsToBounds = YES;
     [targetView addSubview:self.ui_backIndicator];
 }
 
@@ -131,6 +132,7 @@
                     [self move:self.ui_backIndicator toX:-80];
                 } completion:^(BOOL finished) {
                     [self move:self.ui_backIndicator toX:-80];
+                    self.ui_backIndicator.hidden = YES;
                 }];
                 
             }
