@@ -64,4 +64,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (BOOL)panToBankAbleViewOn:(CGPoint)point
+{
+    if (point.x < 320 && point.y < 200){
+        NSLog(@"DO NOT USE IN %f.%f",point.x, point.y);
+        return NO;
+    }
+    else return YES;
+}
+
 @end

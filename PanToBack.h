@@ -19,6 +19,7 @@
 @protocol PanTobackDelegate <NSObject>
 
 -(void)back;
+-(BOOL)panToBankAbleViewOn:(CGPoint) point;
 
 @end
 

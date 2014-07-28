@@ -15,6 +15,8 @@
     
     BOOL backSwipeReversed;
     CGFloat backSwipeBegan;
+    
+    NSMutableArray *exceptViewList;
 }
 
 @end
@@ -64,7 +66,26 @@
 - (void)handlePanGesture:(UIPanGestureRecognizer *)panGesture //Your action method
 {
     if (self.isDissabled) return;
+    
+    // Check Except View
+    if ([self.delegate respondsToSelector:@selector(panToBankAbleViewOn:)]){
+        if (![self.delegate panToBankAbleViewOn:
+              CGPointMake([panGesture locationInView:targetView].x, [panGesture locationInView:targetView].y)]){
+            
+            [UIView animateWithDuration:.3 animations:^{
+                [self move:self.ui_backIndicator toX:-80];
+            } completion:^(BOOL finished) {
+                [self move:self.ui_backIndicator toX:-80];
+                self.ui_backIndicator.hidden = YES;
+            }];
+            
+            return;
+        }
+    }
+    
     self.ui_backIndicator.alpha = 1.;
+    
+    self.ui_backIndicator.hidden = NO;
     
     float center = targetView.frame.size.width/2 - self.ui_backIndicator.frame.size.width/2;
     switch(panGesture.state) {
@@ -93,7 +114,6 @@
             
             // Arrived to center
             if (moveTo > center){
-
                 [UIView animateWithDuration:0.3 animations:^{
                     [self move:self.ui_backIndicator toX:center];
                 }];
@@ -102,7 +122,6 @@
             }
             // Moving...
             else{
-                
                 [UIView animateWithDuration:0.3 animations:^{
                     [self move:self.ui_backIndicator toX:moveTo];
                 }];
@@ -168,6 +187,6 @@
 {
     [self.delegate back];
 }
-
+ 
 
 @end
