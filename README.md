@@ -9,9 +9,11 @@ Panning To Back Naivigating in  iOS App
 Use
 ========
 
-0. Copy files in 'src' to your project. And import header.
+######COPY
 
-1. Initation
+Copy files in 'src' to your project. And import header.
+
+######Initation
 
 ```objective-c
     PanToBack *backer = [[PanToBack alloc] init];
@@ -20,7 +22,7 @@ Use
     backer.isDissabled = NO;
 ```
 
-2. Delegate
+######Delegate
 
 REQUIRED
 ```objective-c
@@ -30,7 +32,9 @@ REQUIRED
 }
 ```
 
+
 OPTIONAL : Define Disable some Areas
+```objective-c
 - (BOOL)panToBankAbleViewOn:(CGPoint)point
 {
     if (point.x < 320 && point.y < 200){
@@ -39,3 +43,4 @@ OPTIONAL : Define Disable some Areas
     }
     else return YES;
 }
+```
