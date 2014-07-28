@@ -22,9 +22,20 @@ Use
 
 2. Delegate
 
+REQUIRED
 ```objective-c
 - (void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 ```
+
+OPTIONAL : Define Disable some Areas
+- (BOOL)panToBankAbleViewOn:(CGPoint)point
+{
+    if (point.x < 320 && point.y < 200){
+        NSLog(@"DO NOT USE IN %f.%f",point.x, point.y);
+        return NO;
+    }
+    else return YES;
+}
