@@ -19,7 +19,6 @@ Copy files in 'src' to your project. And import header.
     PanToBack *backer = [[PanToBack alloc] init];
     [backer linkView:self.view];
     backer.delegate = self;
-    backer.isDissabled = NO;
 ```
 
 ######Delegate
